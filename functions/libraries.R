@@ -1,0 +1,5 @@
+library(stringr)
+library(rvest)
+library(tidyverse)
+library(matrixStats)
+library(datasets)
