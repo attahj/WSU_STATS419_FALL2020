@@ -252,3 +252,19 @@ grabFilmsForPerson = function(nmid)
 
   result;
 }
+
+inflation = function(x)
+{
+  infl = read.csv("https://raw.githubusercontent.com/attahj/WSU_STATS419_FALL2020/master/datasets/inflation.csv",header=FALSE)
+  list = x[,c('millions','year')]
+  newmoney = c()
+  for (i in 1:nrow(list))
+  {
+    currentCPI = infl[infl$V1 == '2020',]$V2
+    yearCPI = infl[infl$V1 == toString(list[i,]$year) ,]$V2
+    newvalue = (currentCPI / yearCPI) * list[i,]$millions
+    newmoney = c(newmoney,newvalue)
+    
+  }
+  return(newmoney)
+}
