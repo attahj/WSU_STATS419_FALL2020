@@ -1,6 +1,6 @@
 ---
 title: "Week 03 Assignment 02_datasets"
-author: "YOUR NAME HERE"
+author: "Jaleel Attah"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   pdf_document:
