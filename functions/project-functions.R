@@ -62,3 +62,7 @@ dataRegressionPlotSeperateGender = function(x,y,z)
   plot$plane3d(y)
   legend("topright", legend = levels(x$my.gender), col = c("#E69F00", "#56B4E9"), pch = 16)
 }
+withinHALFSD = function(x,y,sd)
+{
+  return(abs(x-y) <=sd/2)
+}
