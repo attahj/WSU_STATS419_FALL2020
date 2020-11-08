@@ -21,3 +21,7 @@ getfemale = function(x)
 {
   return(x %>% filter(my.gender=='f')
 }
+getnumeric = function(x)
+{
+  return(x %>% select_if(is.numeric))
+}
