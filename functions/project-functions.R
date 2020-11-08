@@ -15,11 +15,11 @@ prepareMeasureData = function(x)
 }
 getmale = function(x)
 {
-  return(x %>% filter(my.gender=='m')
+  return(x %>% filter(my.gender=='m'))
 }
 getfemale = function(x)
 {
-  return(x %>% filter(my.gender=='f')
+  return(x %>% filter(my.gender=='f'))
 }
 getnumeric = function(x)
 {
