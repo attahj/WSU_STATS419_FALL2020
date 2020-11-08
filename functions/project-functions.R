@@ -12,8 +12,6 @@ prepareMeasureData = function(x)
 {
   measure = x[-c(1,8:12,14,15,16,17,18,28)]
   measure = measure[c(2,7:8,18)]
-  #convert gender to factor
-  measure$my.gender = as.factor(measure$my.gender)
   return(measure)
 }
 getmale = function(x)
@@ -31,6 +29,8 @@ getnumeric = function(x)
 cleanoutlier = function(x,y)
 {
   new = rbind(x,y) %>% filter(hand.length<50)
+  #convert gender to factor
+  new$my.gender = as.factor(new$my.gender)
   return (new)
 }
 build3correlationtables = function(x,y,z)
