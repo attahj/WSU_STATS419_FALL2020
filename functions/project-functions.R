@@ -10,7 +10,7 @@ getdata = function()
 prepareMeasureData = function(x)
 {
   measure = x[-c(1,8:12,14,15,16,17,18,28)]
-  measure = measure[c(2,7:9,18)]
+  measure = measure[c(2,7:8,18)]
   return(measure)
 }
 getmale = function(x)
