@@ -25,3 +25,8 @@ getnumeric = function(x)
 {
   return(x %>% select_if(is.numeric))
 }
+cleanoutlier = function(x,y)
+{
+  new = rbind(x,y) %>% filter(hand.length<50)
+  return (new)
+}
