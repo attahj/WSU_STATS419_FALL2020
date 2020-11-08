@@ -13,4 +13,11 @@ prepareMeasureData = function(x)
   measure = measure[c(2,7:9,18)]
   return(measure)
 }
-
+getmale = function(x)
+{
+  return(x %>% filter(my.gender=='m')
+}
+getfemale = function(x)
+{
+  return(x %>% filter(my.gender=='f')
+}
