@@ -51,7 +51,7 @@ dataRegressionPlot = function(x)
   colors = c("#E69F00", "#56B4E9")
   colors = colors[as.numeric(x$my.gender)]
   plot = scatterplot3d(x$hand.length,x$age,x$height, angle=50, pch = 16, color=adjustcolor(colors,alpha.f=0.6),  box=FALSE,main="Male and Female Regression Plot")
-  plot$plane3d((lm(height ~ ., getnumeric(x)))
+  plot$plane3d((lm(height ~ ., getnumeric(x))))
   legend("topright", legend = levels(x$my.gender), col = c("#E69F00", "#56B4E9"), pch = 16)
 }
 dataRegressionPlotSeperateGender = function(x,y,z)
