@@ -1,4 +1,5 @@
 library(tidyverse)
+options(scipen=999)
 getdata = function()
 {
   #open the file and parse into df
