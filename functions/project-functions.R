@@ -9,6 +9,7 @@ getdata = function()
 }
 prepareMeasureData = function(x)
 {
-  return(x[-c(1,8:12,14,15,16,17,18,28)])
+  measure = x[-c(1,8:12,14,15,16,17,18,28)]
+  return(measure %>% select_if(is.numeric))
 }
 
