@@ -76,3 +76,10 @@ predictionResults = function(measure)
   sprintf("%.2f%% of the predictions were within half of the standard deviation" , a*100)
   sprintf("The cosine similarity between the true height value for each sample and prediction for each sample is %.2f%%" ,b[1]*100)  
 }
+comparePlots = function(x)
+ {
+  colors = c("#E69F00", "#56B4E9")
+  colors = colors[as.numeric(x$my.gender)]
+  plot(getnumeric(x)[,1:3],col=colors)
+  plot(getnumeric(x)[,-1],col=colors) 
+ }
