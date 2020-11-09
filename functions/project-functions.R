@@ -3,6 +3,7 @@ options(scipen=999)
 library(scatterplot3d)
 library(stats)
 library(lsa)
+source_url( "https://raw.githubusercontent.com/MonteShaffer/humanVerseWSU/master/misc/functions-project-measure.R");
 
 getdata = function()
 {
