@@ -81,6 +81,6 @@ comparePlots = function(x,y)
  {
   colors = c("#E69F00", "#56B4E9")
   colors = colors[as.numeric(x$my.gender)]
-  plot(getnumeric(x),col=colors)
-  legend("topright", legend = levels(x$my.gender), col = c("#E69F00", "#56B4E9"),main=y)
+  plot(getnumeric(x),col=colors,main=y)
+  legend("topright", legend = levels(x$my.gender), col = c("#E69F00", "#56B4E9"))
  }
