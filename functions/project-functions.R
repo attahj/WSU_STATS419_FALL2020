@@ -1,6 +1,9 @@
 library(tidyverse)
 options(scipen=999)
 library(scatterplot3d)
+library(stats)
+library(lsa)
+
 getdata = function()
 {
   #open the file and parse into df
@@ -65,4 +68,11 @@ dataRegressionPlotSeperateGender = function(x,y,z)
 withinHALFSD = function(x,y,sd)
 {
   return(abs(x-y) <=sd/2)
+}
+predictionResults = function(measure)
+{
+  a = sum(apply(cbind(measure$height,measure$height.prediction), 1, function(x) withinHALFSD(x[1], x[2],sd(measure$height))))/length(measure$height)
+  b = cosine(as.vector(measure$height),as.vector(measure$height.prediction))
+  sprintf("%.2f%% of the predictions were within half of the standard deviation" , a*100)
+  sprintf("The cosine similarity between the true height value for each sample and prediction for each sample is %.2f%%" ,b[1]*100)  
 }
