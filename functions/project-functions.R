@@ -81,5 +81,5 @@ comparePlots = function(x,y)
  {
   colors = c("#E69F00", "#56B4E9")
   colors = colors[as.numeric(x$my.gender)]
-  plot(getnumeric(x),col=colors,main=y)
+  plot(getnumeric(x),col=adjustcolor(colors,alpha.f=0.6),main=y, pch = 16)
  }
