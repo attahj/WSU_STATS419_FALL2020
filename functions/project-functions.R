@@ -77,12 +77,10 @@ predictionResults = function(measure)
   cat(sprintf("\n%.2f%% of the predictions were within half of the standard deviation \nThe cosine similarity between height and predicted height for each sample is %.2f%%", a*100,b[1]*100))
 
 }
-comparePlots = function(x)
+comparePlots = function(x,y)
  {
   colors = c("#E69F00", "#56B4E9")
   colors = colors[as.numeric(x$my.gender)]
-  plot(getnumeric(x)[,1:3],col=colors)
-  legend("topright", legend = levels(x$my.gender), col = c("#E69F00", "#56B4E9"))
-  plot(getnumeric(x)[,-1],col=colors)
-  legend("topright", legend = levels(x$my.gender), col = c("#E69F00", "#56B4E9"))
+  plot(getnumeric(x),col=colors)
+  legend("topright", legend = levels(x$my.gender), col = c("#E69F00", "#56B4E9"),main=y)
  }
