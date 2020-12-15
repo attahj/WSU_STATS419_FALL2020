@@ -59,3 +59,10 @@ movieWatchRating = function(actor,name)
   plot = ggplot(actor, aes(rated)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)+geom_text(aes( label = scales::percent((..count..)/sum(..count..)),y= (..count..)/sum(..count..) ), stat= "count", vjust = -.5)
   plot	  
 }
+movieGenres = function(actor,name)
+{
+  actor$genre[is.na(actor$genre)] = "No Genre Listed"	
+  actor$genre = as.factor(actor$genre)	 
+  plot = ggplot(actor, aes(genre)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)+geom_text(aes( label = scales::percent((..count..)/sum(..count..)),y= (..count..)/sum(..count..) ), stat= "count", vjust = -.5)
+  plot	  
+}
