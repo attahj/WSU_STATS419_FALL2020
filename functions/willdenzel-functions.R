@@ -27,3 +27,25 @@ source_url( include.me );
 
 
 library(imdb);
+
+getdata = function(ttid)
+{
+  #get movies for actor
+  actor = IMDB.getMoviesForPerson(ttid);
+  actor = merge(actor.movies, imdb.data$movies.df$info, by="ttid");
+  actor = standardizeDollarsInDataFrame(actor, 2000, "millions", "year", "millions2000");
+  actor = standardizeDollarsInDataFrame(actor, 2000, "usa.opening", "year", "usa.opening2000"); 
+  actor = standardizeDollarsInDataFrame(actor, 2000, "usa.gross", "year", "usa.gross2000");
+  actor = standardizeDollarsInDataFrame(actor, 2000, "world.gross", "year", "world.gross2000");
+  actor.rank = subsetDataFrame(imdb.data$movies.df$cast, "nmid", "==", "nm0000226"); 
+  actor = merge(actor, actor.rank[c("ttid","actor.rank")], by="ttid",all.x = TRUE);
+  num.actors = actor.rank[FALSE,]
+  for (i in 1:length(actor$ttid))
+    num.actors = rbind(num.actors,subsetDataFrame(imdb.data$movies.df$cast, "ttid", "==", actor$ttid[i]))
+  num.actors = num.actors %>% filter(nmid != "nm0000226")
+  num.actors = num.actors %>% count(ttid)
+  num.actors = num.actors %>% rename( num.actors.worked.with=n)
+  actor = merge(actor, num.actors, by="ttid",all.x = TRUE);
+  actor = subset(actor, select = -c(title,millions,country,language,release.date,aka,filming.location,production.name,runtime,sound,color,aspect,release.location,budget.est,usa.opening.date,production.co))
+  return actor
+}
