@@ -52,10 +52,10 @@ getdata = function(ttid)
 }
 movieWatchRating = function(actor,name)
 {
-  actor$rated[is.na(actor$rated)] = "Not Rated"	  actor$rated[is.na(actor$rated)] = "Not Rated"
-  actor$rated[actor$rated=="TV-14"] = "PG-13"	  actor$rated[actor$rated=="TV-14"] = "PG-13"
-  actor$rated[actor$rated=="TV-MA"] = "R"	  actor$rated[actor$rated=="TV-MA"] = "R"
-  actor$rated = as.factor(actor$rated)	  actor$rated = as.factor(actor$rated)
-  plot = ggplot(actor, aes(rated)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")	  plot <- ggplot(actor, aes(rated)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)
+  actor$rated[is.na(actor$rated)] = "Not Rated"	
+  actor$rated[actor$rated=="TV-14"] = "PG-13"	 
+  actor$rated[actor$rated=="TV-MA"] = "R"	 
+  actor$rated = as.factor(actor$rated)	 
+  plot = ggplot(actor, aes(rated)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)
   plot	  
 }
