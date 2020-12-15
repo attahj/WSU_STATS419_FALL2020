@@ -31,7 +31,7 @@ library(imdb);
 getdata = function(ttid)
 {
   #get movies for actor
-  actor = IMDB.getMoviesForPerson(ttid);
+  actor.movies = IMDB.getMoviesForPerson(ttid);
   actor = merge(actor.movies, imdb.data$movies.df$info, by="ttid");
   actor = standardizeDollarsInDataFrame(actor, 2000, "millions", "year", "millions2000");
   actor = standardizeDollarsInDataFrame(actor, 2000, "usa.opening", "year", "usa.opening2000"); 
