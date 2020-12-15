@@ -1,5 +1,6 @@
 library(humanVerseWSU);
-
+library(ggplot2)
+library(scales)
 path.github = "https://raw.githubusercontent.com/MonteShaffer/humanVerseWSU/master/";
 
 include.me = paste0(path.github, "misc/functions-nlp.R");
