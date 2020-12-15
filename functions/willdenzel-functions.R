@@ -77,9 +77,9 @@ movieGenres = function(actor,name)
   plot = ggplot(genres, aes(genres$V1)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)+geom_text(aes( label = scales::percent((..count..)/sum(..count..)),y= (..count..)/sum(..count..) ), stat= "count", vjust = -.5) + theme(axis.text.x = element_text(angle = 90)) + xlab("different genres")
   plot	  
 }
-movieLength = function(actor)
+movieLength = function(actor,name)
 {
   actor.mins = actor[complete.cases(actor[, "minutes"]),]
   actor.mins$minutes
-  hist(actor.mins$minutes, breaks = seq(0,210,by=30))
+  hist(main="Movie Lengths for " + name ,actor.mins$minutes, breaks = seq(0,210,by=30))
 }
