@@ -59,10 +59,21 @@ movieWatchRating = function(actor,name)
   plot = ggplot(actor, aes(rated)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)+geom_text(aes( label = scales::percent((..count..)/sum(..count..)),y= (..count..)/sum(..count..) ), stat= "count", vjust = -.5)
   plot	  
 }
+listofMovieGenres = function(actor.genres)
+{
+  list = c()
+  for(i in 1:length(actor.genres))
+  {
+    list= c(list,as.list(strsplit(actor.genres[i], ", ")[[1]]))
+  }
+  list = as.list(as.data.frame(t(data.frame(list))))
+  return(list)
+}
 movieGenres = function(actor,name)
 {
-  actor$genre[is.na(actor$genre)] = "No Genre Listed"	
-  actor$genre = as.factor(actor$genre)	 
-  plot = ggplot(actor, aes(genre)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)+geom_text(aes( label = scales::percent((..count..)/sum(..count..)),y= (..count..)/sum(..count..) ), stat= "count", vjust = -.5)
+  actor$genre[is.na(actor$genre)] = "No Genre Listed"
+  genres = data.frame(listofMovieGenres(actor$genre))
+  genres$V1 = as.factor(genres$V1)	 
+  plot = ggplot(genres, aes(genres$V1)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)+geom_text(aes( label = scales::percent((..count..)/sum(..count..)),y= (..count..)/sum(..count..) ), stat= "count", vjust = -.5) + theme(axis.text.x = element_text(angle = 90)) + xlab("different genres")
   plot	  
 }
