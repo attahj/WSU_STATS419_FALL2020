@@ -46,6 +46,6 @@ getdata = function(ttid)
   num.actors = num.actors %>% count(ttid)
   num.actors = num.actors %>% rename( num.actors.worked.with=n)
   actor = merge(actor, num.actors, by="ttid",all.x = TRUE);
-  actor = subset(actor, select = -c(title,millions,year,country,language,release.date,aka,filming.location,production.name,runtime,sound,color,aspect,release.location,budget.est,usa.opening.date,production.co))
+  actor = subset(actor, select = -c(title,millions,usa.opening,usa.gross,world.gross,country,language,release.date,aka,filming.location,production.name,runtime,sound,color,aspect,release.location,budget.est,usa.opening.date,production.co))
   return(actor)
 }
