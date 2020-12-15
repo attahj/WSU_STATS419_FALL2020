@@ -81,5 +81,5 @@ movieLength = function(actor)
 {
   actor.mins = actor[complete.cases(actor[, "minutes"]),]
   actor.mins$minutes
-  hist(actor.mins$minutes, breaks = seq(0,180,by=30))
+  hist(actor.mins$minutes, breaks = seq(0,210,by=30))
 }
