@@ -49,3 +49,12 @@ getdata = function(ttid)
   actor = subset(actor, select = -c(title,millions,usa.opening,usa.gross,world.gross,country,language,release.date,aka,filming.location,production.name,runtime,sound,color,aspect,release.location,budget.est,usa.opening.date,production.co))
   return(actor)
 }
+movieWatchRating = function(actor)
+{
+  actor$rated[is.na(actor$rated)] = "Not Rated"
+  actor$rated[actor$rated=="TV-14"] = "PG-13"
+  actor$rated[actor$rated=="TV-MA"] = "R"
+  actor$rated = as.factor(actor$rated)
+  plot <- ggplot(actor, aes(rated)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")
+  plot
+}
