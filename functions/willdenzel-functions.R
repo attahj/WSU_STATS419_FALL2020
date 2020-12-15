@@ -56,6 +56,6 @@ movieWatchRating = function(actor,name)
   actor$rated[actor$rated=="TV-14"] = "PG-13"	 
   actor$rated[actor$rated=="TV-MA"] = "R"	 
   actor$rated = as.factor(actor$rated)	 
-  plot = ggplot(actor, aes(rated)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)
+  plot = ggplot(actor, aes(rated)) + geom_bar(aes(y = (..count..)/sum(..count..))) + scale_y_continuous(labels=scales::percent) + ylab("percentage of films")+ ggtitle(name)+geom_text(aes( label = scales::percent((..count..)/sum(..count..)),y= (..count..)/sum(..count..) ), stat= "count", vjust = -.5)
   plot	  
 }
